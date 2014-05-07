@@ -1,0 +1,11 @@
+Changes
+lib/Mojolicious/Plugin/Number/Commify.pm
+LICENSE
+Makefile.PL
+MANIFEST
+MANIFEST.SKIP
+README.md
+test/00-load.t
+test/manifest.t
+test/pod.t
+test/version.t
