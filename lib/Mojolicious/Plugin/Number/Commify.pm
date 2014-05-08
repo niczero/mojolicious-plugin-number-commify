@@ -1,10 +1,25 @@
 package Mojolicious::Plugin::Number::Commify;
 use Mojo::Base 'Mojolicious::Plugin';
 
-our $VERSION = 0.001;
+our $VERSION = 0.011;
 
 sub register {
   my ($self, $app, $cfg) = @_;
+  $app->helper(commify => sub {
+    my ($self, $number) = @_;
+    $number =~ s/(
+      ^[-+]?  # beginning of number.
+      \d+?    # first digits before first comma
+      (?=     # followed by, (but not included in the match) :
+        (?>(?:\d{3})+) # some positive multiple of three digits.
+        (?!\d)         # an *exact* multiple, not x * 3 + 1 or whatever.
+      )
+      |       # or:
+      \G\d{3} # after the last group, get three digits
+      (?=\d)  # but they have to have more digits after them.
+    )/$1,/xg;
+    $number;
+  });
 }
 
 1;
@@ -43,12 +58,16 @@ Register plugin in L<Mojolicious> application.
 
 =head1 RATIONALE
 
+It's often useful to have access to a commify function in views, so an easily
+accessible helper is in order.
 
 =head1 COPYRIGHT AND LICENSE
+
+Copyright (C) Benjamin Goldberg, Nic Sandfield
 
 This program is free software, you can redistribute it and/or modify it under
 the terms of the Artistic License version 2.0.
 
 =head1 SEE ALSO
 
-L<Mojolicious::Guides>.
+L<perlfaq5>, L<Mojolicious::Guides>.

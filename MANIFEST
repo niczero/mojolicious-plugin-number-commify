@@ -6,6 +6,7 @@ MANIFEST
 MANIFEST.SKIP
 README.md
 test/00-load.t
+test/10-commify.t
 test/manifest.t
 test/pod.t
 test/version.t
