@@ -1,12 +1,13 @@
 package Mojolicious::Plugin::Number::Commify;
 use Mojo::Base 'Mojolicious::Plugin';
 
-our $VERSION = 0.011;
+our $VERSION = 0.023;
 
 sub register {
   my ($self, $app, $cfg) = @_;
   $app->helper(commify => sub {
     my ($self, $number) = @_;
+    my $sep = $cfg->{separator} // ',';
     $number =~ s/(
       ^[-+]?  # beginning of number.
       \d+?    # first digits before first comma
@@ -17,7 +18,7 @@ sub register {
       |       # or:
       \G\d{3} # after the last group, get three digits
       (?=\d)  # but they have to have more digits after them.
-    )/$1,/xg;
+    )/$1$sep/xgo;
     $number;
   });
 }
@@ -44,6 +45,12 @@ commas into big numbers.  Sometimes this is 1,000,000 times better than letting
 the reader try to parse it.
 
 =head1 USAGE
+
+The plugin takes an optional 'separator' to use for separating groups of digits.
+Any length of string can be used, but common choices are dot ('.'), space (' '),
+or apostrophe ("'").  If no separator is specified, it defaults to comma (',').
+
+  $self->plugin('Number::Commify' => { separator => ' ' });
 
 =head1 METHODS
 

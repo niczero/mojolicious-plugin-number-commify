@@ -1,3 +1,7 @@
+0.023 2015-01-11
+  * Support any separator.
+  * Added Ted Olson fee to tests.
+
 0.011 2014-05-08
   * Added helper and test.
 
