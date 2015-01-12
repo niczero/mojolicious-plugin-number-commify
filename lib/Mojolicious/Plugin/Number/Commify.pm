@@ -1,7 +1,7 @@
 package Mojolicious::Plugin::Number::Commify;
 use Mojo::Base 'Mojolicious::Plugin';
 
-our $VERSION = 0.023;
+our $VERSION = 0.031;
 
 sub register {
   my ($self, $app, $cfg) = @_;
@@ -48,9 +48,10 @@ the reader try to parse it.
 
 The plugin takes an optional 'separator' to use for separating groups of digits.
 Any length of string can be used, but common choices are dot ('.'), space (' '),
-or apostrophe ("'").  If no separator is specified, it defaults to comma (',').
+underscore ('_') or apostrophe ("'").  If no separator is specified, it defaults
+to comma (',').
 
-  $self->plugin('Number::Commify' => { separator => ' ' });
+  $self->plugin('Number::Commify' => { separator => '.' });
 
 =head1 METHODS
 

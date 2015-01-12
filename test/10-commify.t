@@ -4,7 +4,8 @@ use Test::More;
 use Mojolicious;
 use Mojolicious::Plugin::Number::Commify;
 
-my $app = Mojolicious->new->secrets(['x']);
+my $app = Mojolicious->new;
+$app->secrets(['x']) if $Mojolicious::VERSION > 4.63;
 my $plugin = Mojolicious::Plugin::Number::Commify->new;
 
 # English
