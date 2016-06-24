@@ -13,15 +13,14 @@ WriteMakefile(
   META_MERGE   => {
     requires  => {perl => 5.010001},
     resources => {
+      bugtracker => 'https://github.com/niczero/mojolicious-plugin-number-commify/issues',
       license    => 'http://www.opensource.org/licenses/artistic-license-2.0',
-      repository => 'http://github.com/niczero/mojolicious-plugin-number-commify',
-      bugtracker => 'http://github.com/niczero/mojolicious-plugin-number-commify/issues'
+      repository => 'https://github.com/niczero/mojolicious-plugin-number-commify'
     },
-    no_index => {directory => [qw(test)]}
+    no_index => {directory => ['test']}
   },
   BUILD_REQUIRES => {'Test::More' => 0},
-  CONFIGURE_REQUIRES => {'ExtUtils::MakeMaker' => '6.30'},
-  PREREQ_PM => {Mojolicious => 3.33},
-  EXE_FILES => [],
+  CONFIGURE_REQUIRES => {'ExtUtils::MakeMaker' => 6.3},
+  PREREQ_PM => {Mojolicious => 5},
   test => {TESTS => 'test/*.t'}
 );

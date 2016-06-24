@@ -2,7 +2,7 @@ Changes
 lib/Mojolicious/Plugin/Number/Commify.pm
 LICENSE
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 MANIFEST.SKIP
 README.md
 test/00-load.t
