@@ -1,7 +1,7 @@
 package Mojolicious::Plugin::Number::Commify;
-use Mojo::Base 'Mojolicious::Plugin';
+use Mojolicious::Plugin -base;
 
-our $VERSION = 0.031;
+our $VERSION = 0.041;
 
 sub register {
   my ($self, $app, $cfg) = @_;
